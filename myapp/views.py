@@ -6,5 +6,5 @@ class MyView(TemplateView):
   def get_context_data(self):
     return {
       'exclude': '',
-      'names': ['Alice', 'Bob'],
+      'names': ['Alice'],
     }

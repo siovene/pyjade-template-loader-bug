@@ -82,9 +82,11 @@ SECRET_KEY = 'vwxrk1k7n67$d43mg6)@0dbb)&amp;4s#f-toso*5+=vgeg&amp;inj@$&amp;'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+    ('pyjade.ext.django.Loader', (
+      'django.template.loaders.filesystem.Loader',
+      'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
+    )),
 )
 
 MIDDLEWARE_CLASSES = (
@@ -120,6 +122,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 
+    'pyjade',
     'myapp',
 )
 

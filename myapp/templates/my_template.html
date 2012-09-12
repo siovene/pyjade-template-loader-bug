@@ -1,9 +1,40 @@
 {% load myapp_tags %}
 
+<h4>The following if-statement is not entered:</h4>
+<code>{ % if not name|lower in exclude|lower|split:',' % }</code>
+
 {% for name in names %}
   {% if not name|lower in exclude|lower|split:',' %}
     <p>
       Hello from {{name}}!
     </p>
+  {% else %}
+    <p>The "else" was entered.</p>
   {% endif %}
 {% endfor %}
+
+<h4>But not even the following if-statement is entered:</h4>
+<code>{ % if name|lower in exclude|lower|split:',' % }</code>
+
+{% for name in names %}
+  {% if name|lower in exclude|lower|split:',' %}
+    <p>
+      Hello from {{name}}!
+    </p>
+  {% else %}
+    <p>The "else" was entered.</p>
+  {% endif %}
+{% endfor %}
+
+<h4>This works fine instead:</h4>
+<code>{ % if name|lower not in exclude|lower|split:',' % }</code>
+
+{% for name in names %}
+  {% if name|lower not in exclude|lower|split:',' %}
+    <p>
+      Hello from {{name}}!
+    </p>
+  {% endif %}
+{% endfor %}
+
+<h5>Note that things work fine if you change the TEMPLATE_LOADERS back to default, instead of pyjade.</h5>
