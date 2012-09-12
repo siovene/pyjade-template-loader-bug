@@ -1,0 +1,9 @@
+{% load myapp_tags %}
+
+{% for name in names %}
+  {% if not name|lower in exclude|lower|split:',' %}
+    <p>
+      Hello from {{name}}!
+    </p>
+  {% endif %}
+{% endfor %}
